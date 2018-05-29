@@ -1,0 +1,30 @@
+<% @title = 'Rumblr Blog' %>
+
+<h2>Welcome to Rumblr.</h2>
+
+<% if @user.nil? %>
+
+  <h3>Let's get started!</h3>
+
+  <div class="center">
+    <a href="/sign_up">
+      <button type="submit" name="sign_up" class="btn btn-outline-secondary btn-sm current_btn">
+        Sign Up
+      </button>
+    </a>
+
+    <a href="/log_in">
+      <button type="submit" name="log_in" class="btn btn-outline-secondary btn-sm current_btn">
+        Log In
+      </button>
+    </a>
+  </div>
+
+<% else %>
+
+  This is working, logged in
+
+  
+
+
+<% end %>

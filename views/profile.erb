@@ -1,0 +1,38 @@
+<% @title = @user.username %>
+
+ <div class="container account-element center">
+    <div class="row account-row">
+      <div class="col-6 right-align">
+        <span class="bold">Username:</span> <br>
+        <span class="bold">First Name:</span> <br>
+        <span class="bold">Last Name:</span> <br>
+        <span class="bold">Email Address:</span> <br>
+        <span class="bold">Birthday:</span> <br>
+      </div>
+      <div class="col-6 left-align">
+        <%= @user.username %><br>
+        <%= @user.first_name %><br>
+        <%= @user.last_name %><br>
+        <%= @user.email %><br>
+        <%= @user.birthday %>
+      </div>
+    </div>
+
+    <a href="/edit_account/<%= @user.id %>">
+      <button type="submit" name="edit_account" class="btn btn-outline-info btn-sm current_btn">
+        Edit Account
+      </button>
+    </a>
+
+    <a href="/log_out">
+      <button type="submit" name="log_out" class="btn btn-outline-secondary btn-sm current_btn">
+        Log Out
+      </button>
+    </a>
+
+    <a href="/delete_account/<%= @user.id %>">
+      <button type="submit" name="delete_account" class="btn btn-outline-danger btn-sm current_btn">
+        Delete Account
+      </button>
+    </a>
+  </div>

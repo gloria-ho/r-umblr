@@ -1,0 +1,93 @@
+$primary-color: #696969;
+$secondary-color: #c0c0c0;
+$tertiary-color: #fff;
+$primary-font: sans-serif;
+@mixin border($radius) {
+  border: 1px solid $primary-color;
+  border-radius: $radius;
+}
+@mixin width-margin {
+  width: 100%;
+  margin: 0 auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+body {
+  font-family: $primary-font;
+  color: $primary-color;
+  width: 100%;
+}
+
+h1, h2, h3 {
+  padding: 20px;
+  text-align: center;
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 50px;
+}
+
+input {
+  @include border(5px);
+  padding: 5px;
+}
+
+::placeholder {
+  color: $secondary-color;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.footer_div {
+  margin: 20px 10px;
+}
+
+.socialmedia a, .copyright {
+  margin: 5px;
+}
+
+.copyright {
+  position: absolute;
+  right: 20px;
+}
+
+.form-element {
+  justify-content: center;
+}
+
+.account-element {
+  padding: 20px;
+}

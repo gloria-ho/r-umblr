@@ -1,0 +1,57 @@
+<% @title = 'Edit Profile' %>
+
+<div class="container">
+  <div class="form-row form-horizontal form-element">
+
+    <form action="/create_account" method="POST" class="form-group">
+      <div class="form-group row">
+        <label for="username" class="col-sm-6 col-form-label">Username</label>
+        <input type="text" name="username" class="col-sm-6 form-control" value=<%= @user.username %>><br>
+      </div>
+
+      <div class="form-group row">
+        <label for="password" class="col-sm-6 col-form-label">Password</label>
+        <input type="password" name="password" class="col-sm-6 form-control" value=<%= @user.password %>><br>
+      </div>
+
+      <div class="form-group row">
+        <label for="confirm_password" class="col-sm-6 col-form-label">Confirm Password</label>
+        <input type="password" name="confirm_password" class="col-sm-6 form-control" value=<%= @user.password %>><br>
+      </div>
+        
+      <div class="form-group row">
+        <label for="first_name" class="col-sm-6 col-form-label">First Name</label>
+        <input type="text" name="first_name" class="col-sm-6 form-control" value=<%= @user.first_name %>><br>
+      </div>
+        
+      <div class="form-group row">
+        <label for="last_name" class="col-sm-6 col-form-label">Last Name</label>
+        <input type="text" name="last_name" class="col-sm-6 form-control"value=<%= @user.last_name %>><br>
+      </div>
+        
+      <div class="form-group row">
+        <label for="email" class="col-sm-6 col-form-label">Email Address</label>
+        <input type="email" name="email" class="col-sm-6 form-control" value=<%= @user.email %>><br>
+      </div>
+        
+      <div class="form-group row">
+        <label for="birthday" class="col-sm-6 col-form-label">Birthday</label>
+        <input type="date" name="birthday" class="col-sm-6 form-control" value=<%= @user.birthday %>><br>
+      </div>
+
+      <div class="form-group row">
+        <a href="/">
+          <button type="button" action="/" name="cancel" class="btn btn-outline-danger btn-sm current_btn">
+            Cancel
+          </button>
+        </a>
+
+        <button type="submit" name="update_account" class="btn btn-outline-success btn-sm current_btn">
+          Save Updates
+        </button>
+      </div>
+    </form>
+
+  </div>
+  
+</div>

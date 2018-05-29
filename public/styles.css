@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: 100%; }
+
+body {
+  font-family: sans-serif;
+  color: #696969;
+  width: 100%; }
+
+h1, h2, h3 {
+  padding: 20px;
+  text-align: center; }
+
+.btn {
+  margin: 10px;
+  padding: 10px; }
+
+.center {
+  text-align: center; }
+
+.right-align {
+  text-align: right; }
+
+.left-align {
+  text-align: left; }
+
+.bold {
+  font-weight: bold; }
+
+h2 {
+  margin-top: 50px; }
+
+input {
+  border: 1px solid #696969;
+  border-radius: 5px;
+  padding: 5px; }
+
+::placeholder {
+  color: #c0c0c0; }
+
+a:hover {
+  text-decoration: none; }
+
+.footer_div {
+  margin: 20px 10px; }
+
+.socialmedia a, .copyright {
+  margin: 5px; }
+
+.copyright {
+  position: absolute;
+  right: 20px; }
+
+.form-element {
+  justify-content: center; }
+
+.account-element {
+  padding: 20px; }
+
+/*# sourceMappingURL=styles.css.map */
