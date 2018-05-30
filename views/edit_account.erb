@@ -3,7 +3,7 @@
 <div class="container">
   <div class="form-row form-horizontal form-element">
 
-    <form action="/create_account" method="POST" class="form-group">
+    <form action="/edit_account" method="POST" class="form-group">
       <div class="form-group row">
         <label for="username" class="col-sm-6 col-form-label">Username</label>
         <input type="text" name="username" class="col-sm-6 form-control" value=<%= @user.username %>><br>
@@ -46,7 +46,7 @@
           </button>
         </a>
 
-        <button type="submit" name="update_account" class="btn btn-outline-success btn-sm current_btn">
+        <button type="submit" name="edit_account" class="btn btn-outline-success btn-sm current_btn">
           Save Updates
         </button>
       </div>

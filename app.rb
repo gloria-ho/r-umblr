@@ -11,19 +11,19 @@ enable :sessions
 
 get '/' do
   user_id = User.find_by(username: params[:username])
+  # find user by username
   unless user_id.nil?
+  # if user_id is found
     @user = User.find(session[:user_id])
   end
   erb :index
 end
 
 get '/sign_up' do
-
   erb :sign_up
 end
 
 post '/sign_up' do
-
   @user = User.create(
     username: params[:username],
     password: params[:password],
@@ -45,10 +45,12 @@ post '/log_in' do
   user = User.find_by(username: params[:username])
   
   if user.nil?
+  # if username does not exit, show warning
     flash[:warning] = "Username does not exist. Please sign up for an account."
     redirect 'log_in'
   elsif 
     unless user && user.password == params[:password]
+    # if username and password are incorrect, show warning
       flash[:warning] = "Username and password combination is incorrect."
       redirect '/log_in'
     end
@@ -60,32 +62,40 @@ post '/log_in' do
 end
 
 get '/feed' do
-
   user_id = session[:user_id]
   if user_id.nil?
     redirect '/'
   end
 
   @user = User.find(user_id)
-
   erb :feed
 end
 
 get '/settings' do
-
   erb :settings
 end
 
 get '/profile/:id' do
   @user = User.find(params[:id])
-  
   erb :profile
 end
 
 get '/edit_account/:id' do
   @user = User.find(params[:id])
-
   erb :edit_account
+end
+
+post '/edit_account' do
+  @user = User.update(
+    username: params[:username],
+    password: params[:password],
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    birthday: params[:birthday]
+  )
+
+  redirect "/profile/#{session[:user_id]}"
 end
 
 get 'sign_out' do
