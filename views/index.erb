@@ -3,7 +3,7 @@
 <h2>Welcome to Rumblr.</h2>
 
 <% if @user.nil? %>
-
+<!-- if user is not logged, in show login features -->
   <h3>Let's get started!</h3>
 
   <div class="center">
@@ -21,8 +21,9 @@
   </div>
 
 <% else %>
-
+<!-- if user is logged, in show feed -->
   This is working, logged in
+  FEED GOES HERE
 
   
 

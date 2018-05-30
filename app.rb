@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'sinatra/flash'
 require './models'
 
 # to generate a random string in the irb:
@@ -9,7 +10,8 @@ set :session_secret, ENV['RUMBLR_SESSION_SECRET']
 enable :sessions
 
 get '/' do
-  unless @user_id.nil?
+  user_id = User.find_by(username: params[:username])
+  unless user_id.nil?
     @user = User.find(session[:user_id])
   end
   erb :index
@@ -40,17 +42,19 @@ get '/log_in' do
 end
 
 post '/log_in' do
-  @user = User.find_by(username: params[:username])
+  user = User.find_by(username: params[:username])
   
-  if @user.nil?
+  if user.nil?
     return redirect '/sign_up'
   end
 
-  unless @user.password == params[:password]
-    return redirect '/'
+  unless user && user.password == params[:password]
+    flash[:warning] = "Username and password combination is incorrect."
+    return redirect '/log_in'
   end
   
-  sesson[:user_id] = @user.id
+  session[:user_id] = user.id
+  flash[:info] = "Signed in as #{user.username}."
   redirect '/'
 end
 
@@ -111,40 +115,6 @@ end
 
 
 
-
-
-
-
-get '/post/new' do
-
-  erb :new
-end
-
-post '/todo/create' do
-  Todo.create(name: params[:name], description: params[:description])
-
-  redirect '/'
-end
-
-get '/todo/edit/:id' do
-  @todo = Todo.find(params[:id])
-
-  erb :edit
-end
-
-get '/todo/delete/:id' do
-  todo = Todo.find(params[:id])
-  Todo.delete(todo)
-
-  redirect '/'
-end
-
-post '/todo/update/:id' do
-  todo = Todo.find(params[:id])
-  todo.update(name: params[:name], description: params[:description])
-
-  redirect '/'
-end
 
 
 
