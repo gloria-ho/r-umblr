@@ -45,16 +45,17 @@ post '/log_in' do
   user = User.find_by(username: params[:username])
   
   if user.nil?
-    return redirect '/sign_up'
-  end
-
-  unless user && user.password == params[:password]
-    flash[:warning] = "Username and password combination is incorrect."
-    return redirect '/log_in'
+    flash[:warning] = "Username does not exist. Please sign up for an account."
+    redirect 'log_in'
+  elsif 
+    unless user && user.password == params[:password]
+      flash[:warning] = "Username and password combination is incorrect."
+      redirect '/log_in'
+    end
   end
   
   session[:user_id] = user.id
-  flash[:info] = "Signed in as #{user.username}."
+  flash[:sucess] = "Signed in as #{user.username}."
   redirect '/'
 end
 
@@ -62,7 +63,7 @@ get '/feed' do
 
   user_id = session[:user_id]
   if user_id.nil?
-    return redirect '/'
+    redirect '/'
   end
 
   @user = User.find(user_id)
@@ -95,26 +96,3 @@ end
 get '/delete_account/:id' do
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
