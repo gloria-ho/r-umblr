@@ -111,3 +111,12 @@ get '/delete_account' do
   flash[:warning] = "Account deleted successfully."
   redirect "/"
 end
+
+get '/new_post' do
+  erb :new_post
+end
+
+post '/new_post' do
+  
+  erb :index
+end
