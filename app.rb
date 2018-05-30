@@ -10,10 +10,9 @@ set :session_secret, ENV['RUMBLR_SESSION_SECRET']
 enable :sessions
 
 get '/' do
-  user_id = User.find_by(username: params[:username])
-  # find user by username
-  unless user_id.nil?
-  # if user_id is found
+  user = User.find_by(username: params[:username])
+  unless session[:user_id].nil?
+  # if user_id is found, define @user globally
     @user = User.find(session[:user_id])
   end
   erb :index
@@ -43,7 +42,7 @@ end
 
 post '/log_in' do
   user = User.find_by(username: params[:username])
-  
+
   if user.nil?
   # if username does not exit, show warning
     flash[:warning] = "Username does not exist. Please sign up for an account."
@@ -98,11 +97,17 @@ post '/edit_account' do
   redirect "/profile/#{session[:user_id]}"
 end
 
-get 'sign_out' do
-
+get '/log_out' do
+  session[:user_id] = nil
+  flash[:info] = "Signed out successfully."
   redirect '/'
 end
 
-get '/delete_account/:id' do
-
+get '/delete_account' do
+  # user = User.find(session[:user_id])
+  # user.profile.posts.each{|p| Post.destroy(p.id)}
+  User.destroy(session[:user_id])
+  session[:user_id] = nil
+  flash[:warning] = "Account deleted successfully."
+  redirect "/"
 end
