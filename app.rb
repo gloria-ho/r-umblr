@@ -32,7 +32,6 @@ post '/sign_up' do
     email: params[:email],
     birthday: params[:birthday]
   )
-  
   session[:user_id] = @user.id
   redirect '/'
 end
@@ -55,7 +54,6 @@ post '/log_in' do
       redirect '/log_in'
     end
   end
-  
   session[:user_id] = user.id
   flash[:sucess] = "Signed in as #{user.username}."
   redirect '/'

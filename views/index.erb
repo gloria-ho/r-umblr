@@ -7,22 +7,26 @@
 
   <div class="row">
     <div class="col-12">
-      
-      <h2>Recent Posts</h2>
+      <h4>Welcome back, <%= @user[:username]%></h4>
+      <h4>Recent Posts</h4>
 
       <ul class="posts">
         <% unless @posts.nil? %>
           <% @posts.each do |post|%>
             <li>
-              <p class="bold">
-                <%= post[:title] %>
-              </p>
               <p>
+                <span class="bold"><%= post[:title] %></span>
+                <span class="float-right">
+                  <span class="italic float">Created by: </span><span class="bold"><%= User.find(post.user_id).username %></span>
+                </span>
+              </p>
+
+              <p class="clear">
                 <%= post[:post] %>
               </p>
               <p class="small-text align-right">
-                <span class="bold">Published:</span> <%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %><br>
-                <span class="bold">Last Updated:</span> <%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %>
+                <span class="bold">Published:</span> <span class="italic"><%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
+                <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
               </p>
               <p>
                 <!-- LIKE BUTTON!? -->
