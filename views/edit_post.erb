@@ -1,0 +1,65 @@
+<% @title = 'Edit Post' %>
+
+<div class="post-element">
+
+  <div class="row">
+    <div class="col-12">
+      <h2>Edit post</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <form action="/edit_post/<%= @post[:id] %>" method="POST">
+
+        <div class="row">
+          <div class="col-12">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" value="<%= @post.title %>">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="">Post</label>
+            <textarea cols="30" rows="10" name="post" class="form-control"><%= @post.post %></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+
+            <div class="float-left">
+              <a href="/my_posts">
+                <button type="button" name="cancel" class="btn btn-outline-secondary btn-sm current_btn">
+                  Cancel
+                </button>
+              </a>
+
+              <a href="/delete_post/<%= @post[:id] %>"><button type="button" class="btn btn-outline-danger btn-sm current_btn">Delete Post</button></a>
+
+              <button type="submit" name="update_post" class="btn btn-outline-success btn-sm current_btn">
+                Publish Updates
+              </button>
+            </div>
+
+            <div class="align-right small-text float-right margin-top">
+              <span class="bold">Published:</span> <span class="italic"><%= @post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
+              <span class="bold">Last Updated:</span> <span class="italic"><%= @post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  
+</div>
