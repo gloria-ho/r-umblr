@@ -2,9 +2,9 @@ $primary-color: #696969;
 $secondary-color: #c0c0c0;
 $tertiary-color: #fff;
 $primary-font: sans-serif;
-@mixin border($radius) {
-  border: 1px solid $primary-color;
-  border-radius: $radius;
+@mixin border($style) {
+  border: 1px $style $primary-color;
+  border-radius: 5px;
 }
 @mixin width-margin {
   width: 100%;
@@ -99,7 +99,7 @@ h2 {
 }
 
 input {
-  @include border(5px);
+  @include border(solid);
   padding: 5px;
 }
 
@@ -117,6 +117,12 @@ a:hover {
 
 .feed-bg-img{
   @include bg-img('/img/liy.png');
+}
+
+.posts li {
+  @include border(dotted);
+  padding: 10px 20px;
+  margin: 20px 0;
 }
 
 .content {

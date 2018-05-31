@@ -8,10 +8,13 @@
     <ul class="posts">
       <% unless @my_posts.nil? %>
         <% @my_posts.each do |post|%>
-          <li>
+          <li class="clear">
+            
+
             <p class="clear">
               <span class="bold"><%= post[:title] %></span>
             </p>
+
             <p>
               <%= post[:post] %>
             </p>
@@ -23,8 +26,13 @@
 
             <p class="small-text align-right float-right">
               <span class="bold">Published:</span> <span class="italic"><%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
-            <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+              <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
             </p>
+
+            <!-- clear floats -->
+            <div class="clear">
+            </div>
+
           </li>
         <% end %> 
 

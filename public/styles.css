@@ -84,6 +84,12 @@ a:hover {
   overflow: hidden;
   height: 500px; }
 
+.posts li {
+  border: 1px dotted #696969;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 20px 0; }
+
 .content {
   min-height: 725px; }
 
