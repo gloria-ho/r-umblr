@@ -2,12 +2,12 @@
 
 $(document).ready(function() {
 
-  // the two pasword inputs
+// create/update password match verification
+  //  password inputs & buttons
   let pw = $('#password');
   let conf = $('#password_again');
   let form_btn = $('#create_account, #save_btn');
   let pwError = $('#pw_error');
-
   // if passwords don't match inputs change color and show error
   conf.focusout(function() {
     if ( conf.val() != pw.val() ) {
@@ -20,7 +20,6 @@ $(document).ready(function() {
       pwError.hide();
     }    
   })
-
   // if passwords don't match, button is disabled and input shakes
   form_btn.on('click', (function(e) {
     if ( conf.val() != pw.val() ) {

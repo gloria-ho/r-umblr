@@ -1,12 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/flash'
+require 'sinatra/reloader'
 require './models'
 
 # to generate a random string in the irb:
 # require 'securerandom'
 # SecureRandom.hex
-set :session_secret, ENV['RUMBLR_SESSION_SECRET']
+set :session_secret, ENV['X']
 enable :sessions
 
 get '/' do
