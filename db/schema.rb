@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_215014) do
     t.string "last_name"
     t.string "email"
     t.string "username"
-    t.string "displayname"
     t.string "password"
     t.date "birthday"
     t.datetime "created_at"

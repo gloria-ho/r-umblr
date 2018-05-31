@@ -29,25 +29,21 @@
                     <a class="nav-link" href="/new_post">New Post</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/feed">Feed</a>
+                    <a class="nav-link" href="/my_posts">My Posts</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       My Account
                     </a>
                     <div class="dropdown-menu catagories" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="/posts">My Posts</a>
                       <a class="dropdown-item" href="/profile/<%= @user.id %>">My Profile</a>
                       <a class="dropdown-item" href="/edit_account/<%= @user.id %>">Edit Account</a>
+                      <a class="dropdown-item" href="/log_out">Log Out</a>
                     </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/log_out">Log Out</a>
                   </li>
 
                 <% else %>
 
-                
                   <li class="nav-item">
                     <a class="nav-link" href="/sign_up">Sign Up</a>
                   </li>
@@ -66,7 +62,7 @@
     </div>
     <!-- /.row -->
     
-    <div class="row"> 
+    <div class="row yield-element"> 
       <div class="col-12">
         <div class="content">
           <% flash.keys.each do |type| %>
@@ -115,6 +111,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<script srcc="/index.js"></script>  
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/index.js"></script>  
 </body>
 </html>

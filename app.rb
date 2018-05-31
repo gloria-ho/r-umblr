@@ -4,8 +4,8 @@ require 'sinatra/flash'
 require './models'
 
 # to generate a random string in the irb:
-#  require 'securerandom'
-#  SecureRandom.hex
+# require 'securerandom'
+# SecureRandom.hex
 set :session_secret, ENV['RUMBLR_SESSION_SECRET']
 enable :sessions
 
@@ -14,6 +14,7 @@ get '/' do
   unless session[:user_id].nil?
   # if user_id is found, define @user globally
     @user = User.find(session[:user_id])
+    @posts = Post.all.reverse
   end
   erb :index
 end
@@ -60,16 +61,6 @@ post '/log_in' do
   redirect '/'
 end
 
-get '/feed' do
-  user_id = session[:user_id]
-  if user_id.nil?
-    redirect '/'
-  end
-
-  @user = User.find(user_id)
-  erb :feed
-end
-
 get '/settings' do
   erb :settings
 end
@@ -99,7 +90,7 @@ end
 
 get '/log_out' do
   session[:user_id] = nil
-  flash[:info] = "Signed out successfully."
+  flash[:info] = "Signed out."
   redirect '/'
 end
 
@@ -108,15 +99,53 @@ get '/delete_account' do
   # user.profile.posts.each{|p| Post.destroy(p.id)}
   User.destroy(session[:user_id])
   session[:user_id] = nil
-  flash[:warning] = "Account deleted successfully."
+  flash[:warning] = "Account deleted."
   redirect "/"
 end
 
 get '/new_post' do
+  @user = User.find(session[:user_id])
   erb :new_post
 end
 
 post '/new_post' do
-  
-  erb :index
+  @user = User.find(session[:user_id])
+  @post = Post.create(
+    user_id: @user.id,
+    title: params[:title],
+    post: params[:post],
+  )
+  flash[:sucecess] = "Post '#{params[:title]}' has been published."
+  redirect '/'
 end
+
+get '/edit_post/:id' do
+  @user = User.find(session[:user_id])
+  @post = Post.find(params[:id])
+  erb :edit_post
+end
+
+post '/edit_post/:id' do
+  @post = Post.find(params[:id])
+  Post.update(
+    title: params[:title],
+    post: params[:post],
+  )
+  redirect '/my_posts'
+end
+
+get '/my_posts' do
+  @user = User.find(session[:user_id])
+  @my_posts =  Post.where(user_id: @user.id)
+  erb :my_posts
+end
+
+get '/delete_post/:id' do
+  @user = User.find(session[:user_id])
+  post = Post.find(params[:id])
+  Post.destroy(post.id)
+  flash[:warning] = "Post '#{post.title}' has been deleted."
+  redirect '/my_posts'
+end
+
+

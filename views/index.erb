@@ -2,7 +2,44 @@
 
 <h2>Welcome to Rumblr.</h2>
 
-<% if @user.nil? %>
+<% unless @user.nil? %>
+<!-- until user is logged out, in show feed -->
+
+  <div class="row">
+    <div class="col-12">
+      
+      <h2>Recent Posts</h2>
+
+      <ul class="posts">
+        <% unless @posts.nil? %>
+          <% @posts.each do |post|%>
+            <li>
+              <p class="bold">
+                <%= post[:title] %>
+              </p>
+              <p>
+                <%= post[:post] %>
+              </p>
+              <p class="small-text align-right">
+                <span class="bold">Published:</span> <%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %><br>
+                <span class="bold">Last Updated:</span> <%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %>
+              </p>
+              <p>
+                <!-- LIKE BUTTON!? -->
+              </p>
+            </li>
+          <% end %> 
+
+        <% else %>
+          <h4>You have no life 😢 Let's get started! Hit the 'Create New Post' button to create a new entry.</h4>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+
+<% else %>
+
 <!-- if user is not logged, in show login features -->
   <h3>Let's get started!</h3>
 
@@ -19,13 +56,5 @@
       </button>
     </a>
   </div>
-
-<% else %>
-<!-- if user is logged, in show feed -->
-  This is working, logged in
-  FEED GOES HERE
-
-  
-
 
 <% end %>

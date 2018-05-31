@@ -16,7 +16,7 @@ $primary-font: sans-serif;
   padding: 0;
 }
 
-.container {
+.container, .col-12, .row {
   margin: 0;
   padding: 0;
   max-width: 100%;
@@ -42,16 +42,48 @@ h1, h2, h3 {
   text-align: center;
 }
 
-.right-align {
+.align-right {
   text-align: right;
 }
 
-.left-align {
+.align-left {
   text-align: left;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear:both;
+}
+
+.hidden {
+  display: none
+}
+
+.red {
+  color: red;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.small-text {
+  font-size: .8rem;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }
 
 h2 {
@@ -69,6 +101,10 @@ input {
 
 a:hover {
   text-decoration: none;
+}
+
+.content {
+  min-height: 725px;
 }
 
 .footer-div {
@@ -94,4 +130,13 @@ a:hover {
 
 .post-element {
   padding: 10px 15%;
+}
+
+.posts {
+  width: 70%;
+  margin: 10px auto;
+}
+
+.posts li {
+  list-style: none;
 }
