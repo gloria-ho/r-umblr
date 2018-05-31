@@ -10,6 +10,14 @@ $primary-font: sans-serif;
   width: 100%;
   margin: 0 auto;
 }
+@mixin bg-img($img-url) {
+  background-image: url($img-url);
+  background-repeate: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 500px;
+}
+
 
 * {
   margin: 0;
@@ -101,6 +109,14 @@ input {
 
 a:hover {
   text-decoration: none;
+}
+
+.index-bg-img {
+  @include bg-img('/img/aurora88.jpg');
+}
+
+.feed-bg-img{
+  @include bg-img('/img/liy.png');
 }
 
 .content {

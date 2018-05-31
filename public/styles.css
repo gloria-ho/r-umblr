@@ -70,6 +70,20 @@ input {
 a:hover {
   text-decoration: none; }
 
+.index-bg-img {
+  background-image: url("/img/aurora88.jpg");
+  background-repeate: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 500px; }
+
+.feed-bg-img {
+  background-image: url("/img/liy.png");
+  background-repeate: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  height: 500px; }
+
 .content {
   min-height: 725px; }
 

@@ -94,8 +94,13 @@ get '/log_out' do
 end
 
 get '/delete_account' do
-  # user = User.find(session[:user_id])
-  # user.profile.posts.each{|p| Post.destroy(p.id)}
+  user = User.find(session[:user_id])
+  posts =  Post.where(user_id: user.id)
+  unless posts.nil?
+    user.posts.each do |p|
+      Post.destroy(p.id)
+    end
+  end
   User.destroy(session[:user_id])
   session[:user_id] = nil
   flash[:warning] = "Account deleted."
