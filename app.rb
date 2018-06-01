@@ -60,10 +60,6 @@ post '/log_in' do
   redirect '/'
 end
 
-get '/settings' do
-  erb :settings
-end
-
 get '/profile/:id' do
   @user = User.find(params[:id])
   erb :profile
@@ -83,7 +79,6 @@ post '/edit_account' do
     email: params[:email],
     birthday: params[:birthday]
   )
-
   redirect "/profile/#{session[:user_id]}"
 end
 
