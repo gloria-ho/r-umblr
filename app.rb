@@ -7,7 +7,7 @@ require './models'
 # to generate a random string in the irb:
 # require 'securerandom'
 # SecureRandom.hex
-set :session_secret, ENV['X']
+set :session_secret, ENV['RUMBLR_SESSION_SECRET']
 enable :sessions
 
 get '/' do
