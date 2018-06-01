@@ -13,11 +13,8 @@ Password: *password*
 
 ![private nav](/public/img/nav-logged-in.png "Private Nav - logged in")
 
-* Password mismatch warning
-
-![password mismatch](/public/img/pw-miss.png "Password Mismatch Warning")
-
 * Facebook login
+* Password mismatch warning
 * Deactivate submit buttons on password mismatch
 * Animate password input on button click while passwords mismatched
 
