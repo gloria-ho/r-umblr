@@ -5,6 +5,30 @@ Username: *blogger123*
 
 Password: *password*
 
+## Features:
+
+* Public v. private nav menu
+![public menu - not logged in](/img/nav-public.png)
+![private menu - logged in](/img/nav-login.png)
+
+* Password mismatch warning
+![password mismatch warning](/img/pw-miss.png)
+
+* Facebook login
+* Deactivate submit buttons on password mismatch
+* Animate password input on button click while passwords mismatched
+![password Mismatch](/img/pw-miss-anim.png)
+
+* See all user posts and most recent update times, if any
+![all posts](/img/posts-all.png)
+
+* My Posts view includes edit and delete options
+![my posts](/img/posts-self.png)
+
+* My Account view includes account info, edit, and delete options well as log in/out of Facebook
+![my account](/img/profile-self.png)
+
+
 ## Goal:
 
 To create a fullstack simple blog website that enables someone to sign up for an account and create relevant posts on a topic of their choosing.

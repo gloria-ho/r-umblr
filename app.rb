@@ -146,5 +146,3 @@ get '/delete_post/:id' do
   flash[:warning] = "Post '#{post.title}' has been deleted."
   redirect '/my_posts'
 end
-
-
