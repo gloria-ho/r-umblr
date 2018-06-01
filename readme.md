@@ -8,28 +8,35 @@ Password: *password*
 ## Features:
 
 * Public v. private nav menu
+
 ![public nav](/public/img/nav-public.png "Public Nav - not logged in")
 
 ![private nav](/public/img/nav-login.png "Private Nav - logged in")
 
 * Password mismatch warning
+
 ![password mismatch](/public/img/pw-miss.png "Password Mismatch Warning")
 
 * Facebook login
 * Deactivate submit buttons on password mismatch
 * Animate password input on button click while passwords mismatched
+
 ![login screenshot](/public/img/pw-miss-anim.png "Password Mismatch")
 
 * Login welcome
+
 ![welcome back user](/public/img/login.png "Login Welcome Back")
 
 * See all user posts and most recent update times, if any
+
 ![all posts](/public/img/posts-all.png "All Posts")
 
 * My Posts view includes edit and delete options
+
 ![my posts](/public/img/posts-self.png "My Posts")
 
 * My Account view includes account info, edit, and delete options well as log in/out of Facebook
+
 ![my account](/public/img/profile-self.png "My Account")
 
 
