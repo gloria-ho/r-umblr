@@ -8,7 +8,8 @@ Password: *password*
 ## Features:
 
 * Public v. private nav menu
-![public nav](/public/img/nav-public.png "Public Nav - not logged in")
+![public nav](/public/img/nav-public.png =400x "Public Nav - not logged in")
+
 ![private nav](/public/img/nav-login.png "Private Nav - logged in")
 
 * Password mismatch warning
