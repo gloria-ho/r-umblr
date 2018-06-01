@@ -2,6 +2,7 @@
 
 ## Sample Login:
 Username: *blogger123*
+
 Password: *password*
 
 ## Goal:
