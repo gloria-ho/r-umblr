@@ -15,7 +15,7 @@ get '/' do
   unless session[:user_id].nil?
   # if user_id is found, define @user globally
     @user = User.find(session[:user_id])
-    @posts = Post.all.reverse
+    @posts = Post.all.limit(20).reverse
   end
   erb :index
 end
