@@ -11,7 +11,7 @@ Password: *password*
 
 ![public nav](/public/img/nav-public.png "Public Nav - not logged in")
 
-![private nav](/public/img/nav-login.png "Private Nav - logged in")
+![private nav](/public/img/nav-logged-in.png "Private Nav - logged in")
 
 * Password mismatch warning
 
