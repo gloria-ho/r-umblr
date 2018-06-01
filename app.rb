@@ -131,7 +131,7 @@ end
 
 post '/edit_post/:id' do
   @post = Post.find(params[:id])
-  Post.update(
+  @post.update(
     title: params[:title],
     post: params[:post],
   )

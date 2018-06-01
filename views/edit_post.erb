@@ -45,7 +45,10 @@
 
             <div class="align-right small-text float-right margin-top">
               <span class="bold">Published:</span> <span class="italic"><%= @post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
+              <% if @post[:created_at] != @post[:updated_at]%>
+              <!-- if post has been updated, show time -->
               <span class="bold">Last Updated:</span> <span class="italic"><%= @post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+              <% end %>
             </div>
 
           </div>

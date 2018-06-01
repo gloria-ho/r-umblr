@@ -26,7 +26,10 @@
 
             <p class="small-text align-right float-right">
               <span class="bold">Published:</span> <span class="italic"><%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
-              <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+              <% if post[:created_at] != post[:updated_at] %>
+              <!-- if post has been updated, show time -->
+                <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+                <% end %>
             </p>
 
             <!-- clear floats -->

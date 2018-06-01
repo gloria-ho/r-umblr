@@ -4,7 +4,6 @@
 
 <% unless @user.nil? %>
 <!-- until user is logged out, in show feed -->
-
   <div class="row">
     <div class="col-12">
       <h4>Welcome back, <%= @user[:first_name]%></h4>
@@ -29,10 +28,10 @@
               </p>
               <p class="small-text align-right">
                 <span class="bold">Published:</span> <span class="italic"><%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
-                <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
-              </p>
-              <p>
-                <!-- LIKE BUTTON!? -->
+                <% if post[:created_at] != post[:updated_at] %>
+                <!-- if post has been updated, show time -->
+                  <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
+                <% end %>
               </p>
             </li>
           <% end %> 

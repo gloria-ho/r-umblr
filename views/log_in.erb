@@ -20,85 +20,13 @@
     <div class="form-group row center">
       <a href="/"><button type="button" class="btn btn-outline-secondary btn-sm current_btn">Cancel</button></a>
 
-      <button type="submit" class="btn btn-outline-secondary btn-sm current_btn">Log In</button>
+      <button type="submit" class="btn btn-outline-success btn-sm current_btn">Log In</button>
     </div>
   </form>
 </div>
 <div class="center">
     Facebook 
-
-    <script>
-      // called with the results from from FB.getLoginStatus().
-      function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
-        // response object is returned with a status field that lets the
-        // app know the current login status of user.
-        if (response.status === 'connected') {
-          // logged into app and fb.
-          testAPI();
-        } else if (response.status === 'not_authorized') {
-          // logged into fb, but not app.
-          document.getElementById('status').innerHTML = 'Please log into this app.';
-        } else {
-          // not logged into fb, not sure if logged into app or not.
-          document.getElementById('status').innerHTML = 'Log in with Facebook.';
-        }
-      }
-
-      // function is called when user finishes fb login
-      function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-        });
-      }
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1994177677301128',
-          cookie     : true,  // enable cookies to allow server to
-                              // access the session
-          xfbml      : true,  // parse social plugins on this page
-          version    : 'v3.0'
-        });
-
-        // call FB.getLoginStatus()
-        // gets the state of user and can return one of three states to 
-        // the callback
-        // they can be:
-        //   1. Logged into your app ('connected')
-        //   2. Logged into Facebook, but not app ('not_authorized')
-        //   3. Not logged into Facebook and can't tell if user is 
-        //   logged into app or not.
-        FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-        });
-      };
-
-      // Load the SDK asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=1994177677301128&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-      // test the Graph API after login is successful.  See statusChangeCallback() for when this call is made.
-      function testAPI() {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-          console.log('Successful login for: ' + response.name);
-          document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
-        });
-      }
-    </script>
-
-    <!--
-      fb Login Button social plugin, button uses the JavaScript SDK and triggers the FB.login() function when clicked
-    -->
-
+    <!-- fb Login Button social plugin uses the JavaScript SDK and triggers the FB.login() function when clicked -->
     <fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();">
     </fb:login-button>
 
