@@ -20,6 +20,9 @@ Password: *password*
 * Animate password input on button click while passwords mismatched
 ![login screenshot](/public/img/pw-miss-anim.png "Password Mismatch")
 
+* Login welcome
+![welcome back user](/public/img/login.png "Login Welcome Back")
+
 * See all user posts and most recent update times, if any
 ![all posts](/public/img/posts-all.png "All Posts")
 
