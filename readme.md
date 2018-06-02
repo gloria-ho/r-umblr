@@ -1,7 +1,7 @@
 # R-umblr (Ruby Tumblr)
 
 ## Heroku Deployment
-[https://gh-rumblr.herokuapp.com/]
+<https://gh-rumblr.herokuapp.com/>
 
 ## Sample Login:
 Username: *blogger123*
