@@ -8,13 +8,17 @@
   max-width: 100%; }
 
 body {
-  font-family: sans-serif;
+  font-family: "Coming Soon", sans-serif;
   color: #696969;
   width: 100%; }
 
 h1, h2, h3, h4 {
   padding: 20px;
-  text-align: center; }
+  text-align: center;
+  font-family: "Luckiest Guy", sans-serif; }
+
+.logo-text {
+  font-family: "Permanent Marker", sans-serif; }
 
 .btn {
   margin: 10px;

@@ -1,7 +1,9 @@
 $primary-color: #696969;
 $secondary-color: #c0c0c0;
 $tertiary-color: #fff;
-$primary-font: sans-serif;
+$primary-font: 'Coming Soon', sans-serif;
+$header-font: 'Luckiest Guy', sans-serif;
+$logo-font: 'Permanent Marker', sans-serif;
 @mixin border($style) {
   border: 1px $style $primary-color;
   border-radius: 5px;
@@ -38,6 +40,11 @@ body {
 h1, h2, h3, h4 {
   padding: 20px;
   text-align: center;
+  font-family: $header-font;
+}
+
+.logo-text {
+  font-family: $logo-font;
 }
 
 .btn {

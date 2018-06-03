@@ -1,12 +1,10 @@
 <% @title = 'Rumblr Blog' %>
 
-<h2>Welcome to Rumblr.</h2>
-
 <% unless @user.nil? %>
 <!-- until user is logged out, in show feed -->
   <div class="row">
     <div class="col-12">
-      <h4>Welcome back, <%= @user[:first_name]%></h4>
+      <h2 class="header">Welcome back, <%= @user[:first_name]%></h2>
       
       <div class="feed-bg-img"></div>
 
@@ -45,8 +43,9 @@
   </div>
 
 <% else %>
-
 <!-- if user is not logged, in show login features -->
+<h2>Welcome to Rumblr.</h2>
+
   <div class="index-bg-img"></div>
   <h3>Let's get started!</h3>
 
