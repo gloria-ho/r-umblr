@@ -25,16 +25,26 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
-  @user = User.create(
-    username: params[:username],
-    password: params[:password],
-    first_name: params[:first_name],
-    last_name: params[:last_name],
-    email: params[:email],
-    birthday: params[:birthday]
-  )
-  session[:user_id] = @user.id
-  redirect '/'
+  unless User.where(username: params[:username].downcase).present? || User.where(email: params[email].downcase).present?
+    @user = User.create(
+      username: params[:username],
+      password: params[:password],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      birthday: params[:birthday]
+    )
+    session[:user_id] = @user.id
+    redirect '/'
+  end
+  if User.where(username: params[:username].downcase).present?
+    flash[:warning] = "Username already exists, please try a different username."
+    redirect '/sign_up'
+  end
+  if User.where(email: params[:email].downcase).present?
+    flash[:warning] = "Email is already registered. Please log in."
+    redirect '/sign_up'
+  end
 end
 
 get '/log_in' do
@@ -43,7 +53,6 @@ end
 
 post '/log_in' do
   user = User.find_by(username: params[:username])
-
   if user.nil?
   # if username does not exit, show warning
     flash[:warning] = "Username does not exist. Please sign up for an account."
@@ -71,15 +80,25 @@ get '/edit_account/:id' do
 end
 
 post '/edit_account' do
-  @user = User.update(
-    username: params[:username],
-    password: params[:password],
-    first_name: params[:first_name],
-    last_name: params[:last_name],
-    email: params[:email],
-    birthday: params[:birthday]
-  )
-  redirect "/profile/#{session[:user_id]}"
+  unless User.where(username: params[:username].downcase).present? || User.where(email: params[email].downcase).present?
+    @user = User.update(
+      username: params[:username],
+      password: params[:password],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      birthday: params[:birthday]
+    )
+    redirect "/profile/#{session[:user_id]}"
+  end
+  if User.where(username: params[:username].downcase).present?
+    flash[:warning] = "Username already exists, please try a different usename."
+    redirect "/profile/#{session[:user_id]}"
+  end
+  if User.where(email: params[:email].downcase).present?
+    flash[:warning] = "Email is already registered. Please use a different email address."
+    redirect "/profile/#{session[:user_id]}"
+  end
 end
 
 get '/log_out' do
