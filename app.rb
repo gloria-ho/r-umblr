@@ -35,6 +35,7 @@ post '/sign_up' do
       birthday: params[:birthday]
     )
     session[:user_id] = @user.id
+    flash[:success] = "Thank you for signing up, @user.first_name!"
     redirect '/'
   end
   if User.where(username: params[:username].downcase).present?
