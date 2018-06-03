@@ -25,7 +25,7 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
-  unless User.where(username: params[:username].downcase).present? || User.where(email: params[email].downcase).present?
+  unless User.where(username: params[:username].downcase).present? || User.where(email: params[:email].downcase).present?
     @user = User.create(
       username: params[:username],
       password: params[:password],
@@ -38,10 +38,12 @@ post '/sign_up' do
     redirect '/'
   end
   if User.where(username: params[:username].downcase).present?
+  # if username is not unique, display error
     flash[:warning] = "Username already exists, please try a different username."
     redirect '/sign_up'
   end
   if User.where(email: params[:email].downcase).present?
+  # if email is not unique, display error
     flash[:warning] = "Email is already registered. Please log in."
     redirect '/sign_up'
   end
@@ -80,7 +82,6 @@ get '/edit_account/:id' do
 end
 
 post '/edit_account' do
-  unless User.where(username: params[:username].downcase).present? || User.where(email: params[email].downcase).present?
     @user = User.update(
       username: params[:username],
       password: params[:password],
@@ -90,15 +91,6 @@ post '/edit_account' do
       birthday: params[:birthday]
     )
     redirect "/profile/#{session[:user_id]}"
-  end
-  if User.where(username: params[:username].downcase).present?
-    flash[:warning] = "Username already exists, please try a different usename."
-    redirect "/profile/#{session[:user_id]}"
-  end
-  if User.where(email: params[:email].downcase).present?
-    flash[:warning] = "Email is already registered. Please use a different email address."
-    redirect "/profile/#{session[:user_id]}"
-  end
 end
 
 get '/log_out' do
@@ -117,7 +109,7 @@ get '/delete_account' do
   end
   User.destroy(session[:user_id])
   session[:user_id] = nil
-  flash[:warning] = "Account deleted."
+  flash[:warning] = "Account #{user.username} and all posts have been deleted."
   redirect "/"
 end
 
@@ -133,7 +125,7 @@ post '/new_post' do
     title: params[:title],
     post: params[:post],
   )
-  flash[:sucecess] = "Post '#{params[:title]}' has been published."
+  flash[:success] = "Post '#{params[:title]}' has been published."
   redirect '/'
 end
 
@@ -149,6 +141,7 @@ post '/edit_post/:id' do
     title: params[:title],
     post: params[:post],
   )
+  flash[:success] = "Post '#{params[:title]}' has been updated."
   redirect '/my_posts'
 end
 

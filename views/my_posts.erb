@@ -6,18 +6,15 @@
     <h2>My Posts</h2>
 
     <ul class="posts">
-      <% unless @my_posts.nil? %>
+      <% if @my_posts.length < 1 %>
+        <h4>You have no life 😢 Let's get started! Click ' New Post' in the menu to create a new entry.</h4>
+      <% else %>
         <% @my_posts.each do |post|%>
           <li class="clear">
             
+            <p class="clear"><span class="bold"><%= post[:title] %></span></p>
 
-            <p class="clear">
-              <span class="bold"><%= post[:title] %></span>
-            </p>
-
-            <p>
-              <%= post[:post] %>
-            </p>
+            <p><%= post[:post] %></p>
             
             <p class="float-left">
               <a href="/edit_post/<%= post[:id] %>"><button type="submit" class="btn btn-outline-info btn-sm current_btn">Edit Post</button></a>
@@ -26,10 +23,11 @@
 
             <p class="small-text align-right float-right">
               <span class="bold">Published:</span> <span class="italic"><%= post[:created_at].strftime('%Y-%m-%d %H:%M:%S') %></span><br>
+
               <% if post[:created_at] != post[:updated_at] %>
               <!-- if post has been updated, show time -->
                 <span class="bold">Last Updated:</span> <span class="italic"><%= post[:updated_at].strftime('%Y-%m-%d %H:%M:%S') %></span>
-                <% end %>
+              <% end %>
             </p>
 
             <!-- clear floats -->
@@ -37,10 +35,7 @@
             </div>
 
           </li>
-        <% end %> 
-
-      <% else %>
-        <h4>You have no life 😢 Let's get started! Hit the 'Create New Post' button to create a new entry.</h4>
+        <% end %>
       <% end %>
     </ul>
 
