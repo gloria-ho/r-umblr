@@ -1,6 +1,9 @@
 <% @title = @user.username %>
 
  <div class="container account-element center">
+    <div class="row">
+      <h2 class="margin-auto">My Account</h2>
+    </div>
     <div class="row account-row">
       <div class="col-6 align-right">
         <span class="bold">Username:</span> <br>
@@ -16,13 +19,15 @@
         <%= @user.email %><br>
         <%= @user.birthday %>
       </div>
-      <div class="col-12">
-    <!-- fb Login Button social plugin uses the JavaScript SDK and triggers the FB.login() function when clicked -->
-    <fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();">
-    </fb:login-button>
-    <!-- fb status display -->
-    <div id="status" class="center">
-    </div> 
+      <div class="col-12 margin-top">
+        <!-- fb Login Button social plugin uses the JavaScript SDK and triggers the FB.login() function when clicked -->
+        <fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();">
+        </fb:login-button>
+       
+        <!-- fb status display -->
+        <div id="status" class="center margin-top">
+        </div> 
+
       </div>
     </div>
 

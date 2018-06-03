@@ -88,6 +88,11 @@ h1, h2, h3, h4 {
   margin-top: 10px;
 }
 
+.margin-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .small-text {
   font-size: .8rem;
 }
@@ -129,6 +134,10 @@ a:hover {
   @include border(dotted);
   padding: 10px 20px;
   margin: 20px 0;
+}
+
+input {
+  margin: 5px auto;
 }
 
 .content {
