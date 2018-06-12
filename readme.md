@@ -8,6 +8,15 @@ Username: *blogger123*
 
 Password: *password*
 
+## Built With:
+* Ruby
+* Sinatra
+* ActiveRecord
+* PostgreSQL
+* Cookies
+* Deploying to Heroku
+* Bootstrap
+
 ## Features:
 
 * Public v. private nav menu
