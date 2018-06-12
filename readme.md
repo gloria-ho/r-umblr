@@ -1,5 +1,9 @@
 # R-umblr (Ruby Tumblr)
 
+## Goal:
+
+To create a fullstack simple blog website that enables someone to sign up for an account and create relevant posts on a topic of their choosing.
+
 ## Heroku Deployment
 <https://gh-rumblr.herokuapp.com/>
 
@@ -47,10 +51,6 @@ Password: *password*
 
 ![my account](/public/img/profile-self.png "My Account")
 
-
-## Goal:
-
-To create a fullstack simple blog website that enables someone to sign up for an account and create relevant posts on a topic of their choosing.
 
 ## Learning Objectives:  
 
