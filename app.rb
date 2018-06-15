@@ -25,6 +25,32 @@ get '/sign_up' do
 end
 
 post '/sign_up' do
+  # ok each one of these User.where searches the database for a matching user so in total we're doing
+  # this 4 times. We could simply this a little by doing the checks first and return if they fail
+  
+  # if User.where(username: params[:username].downcase).present?
+  #   flash[:warning] = "Username already exists, please try a different username."
+  #   return redirect '/sign_up'
+  # end
+  # if User.where(email: params[:email].downcase).present?
+  #   flash[:warning] = "Email is already registered. Please log in."
+  #   return redirect '/sign_up'
+  # end
+
+  # if both checks fail then we can create the user without having to check it again.
+
+  # @user = User.create(
+  #   username: params[:username],
+  #   password: params[:password],
+  #   first_name: params[:first_name],
+  #   last_name: params[:last_name],
+  #   email: params[:email],
+  #   birthday: params[:birthday]
+  # )
+  # session[:user_id] = @user.id
+  # flash[:success] = "Thank you for signing up, #{@user.first_name}!"
+  # redirect '/'
+
   unless User.where(username: params[:username].downcase).present? || User.where(email: params[:email].downcase).present?
     @user = User.create(
       username: params[:username],
@@ -35,7 +61,7 @@ post '/sign_up' do
       birthday: params[:birthday]
     )
     session[:user_id] = @user.id
-    flash[:success] = "Thank you for signing up, @user.first_name!"
+    flash[:success] = "Thank you for signing up, #{@user.first_name}!"
     redirect '/'
   end
   if User.where(username: params[:username].downcase).present?
@@ -60,7 +86,7 @@ post '/log_in' do
   # if username does not exit, show warning
     flash[:warning] = "Username does not exist. Please sign up for an account."
     redirect 'log_in'
-  elsif 
+  elsif # we need a condition here for elsif.  Should look like elsif condition
     unless user && user.password == params[:password]
     # if username and password are incorrect, show warning
       flash[:warning] = "Username and password combination is incorrect."
@@ -73,25 +99,34 @@ post '/log_in' do
 end
 
 get '/profile/:id' do
+  # should probably check if the user is logged in here before showing them a profile page
   @user = User.find(params[:id])
   erb :profile
 end
 
 get '/edit_account/:id' do
+  # should probably check if the user is logged in here
   @user = User.find(params[:id])
   erb :edit_account
 end
 
 post '/edit_account' do
-    @user = User.update(
-      username: params[:username],
-      password: params[:password],
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      email: params[:email],
-      birthday: params[:birthday]
-    )
-    redirect "/profile/#{session[:user_id]}"
+  # should probably check if the user is logged in here
+  # calling User.update will update *all* users in our database.
+  # should first find the user by id and then update only that instnace
+
+  # @user = User.find(session[:user_id])
+  # @user.update(...) 
+  # look at what you did below for post edit
+  @user = User.update(
+    username: params[:username],
+    password: params[:password],
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    email: params[:email],
+    birthday: params[:birthday]
+  )
+  redirect "/profile/#{session[:user_id]}"
 end
 
 get '/log_out' do
@@ -103,7 +138,8 @@ end
 get '/delete_account' do
   user = User.find(session[:user_id])
   posts =  Post.where(user_id: user.id)
-  unless posts.nil?
+  unless posts.nil? # when you call .where you will always get back an array so it will never be nil
+    # if you want to check that there are posts do "posts.empty?"
     user.posts.each do |p|
       Post.destroy(p.id)
     end
@@ -115,6 +151,7 @@ get '/delete_account' do
 end
 
 get '/new_post' do
+  # should probably check user is logged in here
   @user = User.find(session[:user_id])
   erb :new_post
 end
@@ -148,12 +185,14 @@ end
 
 get '/my_posts' do
   @user = User.find(session[:user_id])
+  # because we defined the has_many :posts on the user model we can do the following:
+  # @my_posts = @user.posts instead of doing the Post.where
   @my_posts =  Post.where(user_id: @user.id)
   erb :my_posts
 end
 
 get '/delete_post/:id' do
-  @user = User.find(session[:user_id])
+  @user = User.find(session[:user_id]) # do we need to do this???
   post = Post.find(params[:id])
   Post.destroy(post.id)
   flash[:warning] = "Post '#{post.title}' has been deleted."
